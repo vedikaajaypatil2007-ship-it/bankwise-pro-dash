@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CppRouteImport } from './routes/cpp'
+import { Route as CreateRouteImport } from './routes/create'
+import { Route as DepositRouteImport } from './routes/deposit'
+import { Route as TransactionsRouteImport } from './routes/transactions'
+import { Route as TransferRouteImport } from './routes/transfer'
+import { Route as WithdrawRouteImport } from './routes/withdraw'
+import { Route as AccountsIndexRouteImport } from './routes/accounts.index'
+import { Route as AccountsNumberRouteImport } from './routes/accounts.$number'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CppRoute = CppRouteImport.update({
+  id: '/cpp',
+  path: '/cpp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateRoute = CreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DepositRoute = DepositRouteImport.update({
+  id: '/deposit',
+  path: '/deposit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransactionsRoute = TransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransferRoute = TransferRouteImport.update({
+  id: '/transfer',
+  path: '/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WithdrawRoute = WithdrawRouteImport.update({
+  id: '/withdraw',
+  path: '/withdraw',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountsIndexRoute = AccountsIndexRouteImport.update({
+  id: '/accounts/',
+  path: '/accounts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountsNumberRoute = AccountsNumberRouteImport.update({
+  id: '/accounts/$number',
+  path: '/accounts/$number',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cpp': typeof CppRoute
+  '/create': typeof CreateRoute
+  '/deposit': typeof DepositRoute
+  '/transactions': typeof TransactionsRoute
+  '/transfer': typeof TransferRoute
+  '/withdraw': typeof WithdrawRoute
+  '/accounts/$number': typeof AccountsNumberRoute
+  '/accounts/': typeof AccountsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cpp': typeof CppRoute
+  '/create': typeof CreateRoute
+  '/deposit': typeof DepositRoute
+  '/transactions': typeof TransactionsRoute
+  '/transfer': typeof TransferRoute
+  '/withdraw': typeof WithdrawRoute
+  '/accounts/$number': typeof AccountsNumberRoute
+  '/accounts': typeof AccountsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cpp': typeof CppRoute
+  '/create': typeof CreateRoute
+  '/deposit': typeof DepositRoute
+  '/transactions': typeof TransactionsRoute
+  '/transfer': typeof TransferRoute
+  '/withdraw': typeof WithdrawRoute
+  '/accounts/$number': typeof AccountsNumberRoute
+  '/accounts/': typeof AccountsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cpp'
+    | '/create'
+    | '/deposit'
+    | '/transactions'
+    | '/transfer'
+    | '/withdraw'
+    | '/accounts/$number'
+    | '/accounts/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cpp'
+    | '/create'
+    | '/deposit'
+    | '/transactions'
+    | '/transfer'
+    | '/withdraw'
+    | '/accounts/$number'
+    | '/accounts'
+  id:
+    | '__root__'
+    | '/'
+    | '/cpp'
+    | '/create'
+    | '/deposit'
+    | '/transactions'
+    | '/transfer'
+    | '/withdraw'
+    | '/accounts/$number'
+    | '/accounts/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CppRoute: typeof CppRoute
+  CreateRoute: typeof CreateRoute
+  DepositRoute: typeof DepositRoute
+  TransactionsRoute: typeof TransactionsRoute
+  TransferRoute: typeof TransferRoute
+  WithdrawRoute: typeof WithdrawRoute
+  AccountsNumberRoute: typeof AccountsNumberRoute
+  AccountsIndexRoute: typeof AccountsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cpp': {
+      id: '/cpp'
+      path: '/cpp'
+      fullPath: '/cpp'
+      preLoaderRoute: typeof CppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deposit': {
+      id: '/deposit'
+      path: '/deposit'
+      fullPath: '/deposit'
+      preLoaderRoute: typeof DepositRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transactions': {
+      id: '/transactions'
+      path: '/transactions'
+      fullPath: '/transactions'
+      preLoaderRoute: typeof TransactionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transfer': {
+      id: '/transfer'
+      path: '/transfer'
+      fullPath: '/transfer'
+      preLoaderRoute: typeof TransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/withdraw': {
+      id: '/withdraw'
+      path: '/withdraw'
+      fullPath: '/withdraw'
+      preLoaderRoute: typeof WithdrawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accounts/': {
+      id: '/accounts/'
+      path: '/accounts'
+      fullPath: '/accounts/'
+      preLoaderRoute: typeof AccountsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accounts/$number': {
+      id: '/accounts/$number'
+      path: '/accounts/$number'
+      fullPath: '/accounts/$number'
+      preLoaderRoute: typeof AccountsNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CppRoute: CppRoute,
+  CreateRoute: CreateRoute,
+  DepositRoute: DepositRoute,
+  TransactionsRoute: TransactionsRoute,
+  TransferRoute: TransferRoute,
+  WithdrawRoute: WithdrawRoute,
+  AccountsNumberRoute: AccountsNumberRoute,
+  AccountsIndexRoute: AccountsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
